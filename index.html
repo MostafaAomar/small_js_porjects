@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .cal {
+        margin: 20px auto;
+        background: #000000bd;
+        width: 300px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        position: relative;
+    }
+
+    #Calculatoroutput {
+        margin: 10px 0;
+        height: 40px;
+        padding: 5px;
+        width: 100%;
+        font-size: 24px;
+        text-align: right;
+        border: none;
+        border-radius: 5px;
+        background: #fff;
+    }
+
+    .btn {
+        margin: 5px;
+        font-size: 18px;
+        height: 40px;
+        width: 60px;
+        border: none;
+        border-radius: 5px;
+        background: #f0f0f0;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .btn:hover {
+        background: #d0d0d0;
+    }
+
+    .btnequal {
+        height: 89px;
+        background: #ff9500;
+        color: #fff;
+        position: absolute;
+        top: 241px;
+        right: 29px;
+    }
+
+    .btnequal:hover {
+        background: #e08900;
+    }
+</style>
+
+<body>
+    <!-- //##  counter project  ############################################### -->
+    <fieldset>
+        <legend>
+            <h1>Counter</h1>
+        </legend>
+        <h1 class="output" id="number"></h1>
+        <input type="button" value="decrese" id="decr">
+        <input type="button" value="reset" id="rest">
+        <input type="button" value="increse" id="incr">
+    </fieldset>
+
+
+    <!-- //##  welcome project  ############################################### -->
+    <fieldset>
+        <legend>
+            <h1>Welcome Message</h1>
+        </legend>
+        <input type="text" id="input">
+        <input type="button" value="click" id="clickbtn">
+        <div class="MessageOutput"></div>
+    </fieldset>
+
+
+    <!-- //##  Calculator project  ############################################### -->
+    <fieldset>
+        <legend>
+            <h1>Calculator</h1>
+        </legend>
+        <div class="cal">
+            <input type="text" id="Calculatoroutput" disabled>
+            <!-- button is better to use more than input type='button' -->
+            <div>
+                <button id="clear" class="btn">C</button>
+                <button id="ac" class="btn">AC</button>
+                <button id="percent" class="btn">%</button>
+                <button id="division" class="btn">/</button>
+            </div>
+            <div>
+                <button id="seven" class="btn">7</button>
+                <button id="eight" class="btn">8</button>
+                <button id="nine" class="btn">9</button>
+                <button id="multiple" class="btn">*</button>
+            </div>
+            <div>
+                <button id="four" class="btn">4</button>
+                <button id="five" class="btn">5</button>
+                <button id="six" class="btn">6</button>
+                <button id="substraction" class="btn">-</button>
+            </div>
+            <div>
+                <button id="one" class="btn">1</button>
+                <button id="two" class="btn">2</button>
+                <button id="three" class="btn">3</button>
+            </div>
+            <div>
+                <button id="zero" class="btn">0</button>
+                <button id="comma" class="btn">.</button>
+                <button id="plus" class="btn">+</button>
+                <button id="equal" class="btn btnequal">=</button>
+            </div>
+        </div>
+    </fieldset>
+
+    <script>
+        //##  counter project  ###############################################
+        //create counter 
+        const num = document.querySelector('.output');
+        let count = 0;
+        const decr = () => {
+            count--;
+            num.innerHTML = count;
+            updatecolor();
+        }
+        const incr = () => {
+            count++;
+            num.innerHTML = count;
+            updatecolor();
+        }
+
+        const reset = () => {
+            count = 0;
+            num.innerHTML = count;
+            updatecolor();
+        }
+        //add color to the counter
+        const updatecolor = () => {
+            if (count < 0) {
+                num.style.color = 'red';
+            } else if (count > 0) {
+                num.style.color = 'green';
+            } else {
+                num.style.color = 'black';
+            }
+        }
+        document.getElementById('decr').addEventListener('click', decr);
+        document.getElementById('rest').addEventListener('click', reset);
+        document.getElementById('incr').addEventListener('click', incr);
+    </script>
+    <script>
+        //##  welcome project  ############################################### 
+        const output = document.querySelector('.MessageOutput');
+        const input = document.querySelector('#input');
+        const btn = () => {
+            const inputValue = input.value;
+            output.innerHTML = `<h1>welcome ${inputValue}</h1>`;
+            input.value = '';
+        }
+        document.getElementById('clickbtn').addEventListener('click', btn);
+    </script>
+    <script>
+        // Calculator  project
+        const caloutput = document.getElementById('Calculatoroutput');
+
+        const one = () => {
+            caloutput.value += '1';
+        }
+        const two = () => {
+            caloutput.value += '2';
+        }
+        const three = () => {
+            caloutput.value += '3';
+        }
+        const four = () => {
+            caloutput.value += '4';
+        }
+        const five = () => {
+            caloutput.value += '5';
+        }
+        const six = () => {
+            caloutput.value += '6';
+        }
+        const seven = () => {
+            caloutput.value += '7';
+        }
+        const eight = () => {
+            caloutput.value += '8';
+        }
+        const nine = () => {
+            caloutput.value += '9';
+        }
+        const zero = () => {
+            caloutput.value += '0';
+        }
+        const multiple = () => {
+            caloutput.value += '*';
+        }
+        const division = () => {
+            caloutput.value += '/';
+        }
+        const substraction = () => {
+            caloutput.value += '-';
+        }
+
+        const plus = () => {
+            caloutput.value += '+';
+        }
+        const clear = () => {
+            caloutput.value = '';
+        }
+        const comma = () => {
+            caloutput.value += '.';
+        }
+        const ac = () => {
+            caloutput.value = caloutput.value.toString().slice(0, -1);
+        }
+        const equal = () => {
+            try {
+                caloutput.value = eval(caloutput.value)
+            } catch (e) {
+                caloutput.value = 'error';
+            }
+        }
+        const percent = () => {
+            caloutput.value = (parseFloat(caloutput.value) / 100).toString();
+        }
+
+        document.getElementById('percent').addEventListener('click', percent);
+
+
+        document.getElementById('one').addEventListener('click', one)
+        document.getElementById('two').addEventListener('click', two)
+        document.getElementById('three').addEventListener('click', three)
+        document.getElementById('four').addEventListener('click', four)
+        document.getElementById('five').addEventListener('click', five)
+        document.getElementById('six').addEventListener('click', six)
+        document.getElementById('seven').addEventListener('click', seven)
+        document.getElementById('eight').addEventListener('click', eight)
+        document.getElementById('nine').addEventListener('click', nine)
+        document.getElementById('zero').addEventListener('click', zero)
+        document.getElementById('multiple').addEventListener('click', multiple)
+        document.getElementById('division').addEventListener('click', division)
+        document.getElementById('substraction').addEventListener('click', substraction)
+        document.getElementById('clear').addEventListener('click', clear)
+        document.getElementById('plus').addEventListener('click', plus)
+        document.getElementById('equal').addEventListener('click', equal)
+        document.getElementById('comma').addEventListener('click', comma)
+        document.getElementById('ac').addEventListener('click', ac)
+    </script>
+
+</body>
+
+</html>
