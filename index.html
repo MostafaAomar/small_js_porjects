@@ -258,7 +258,35 @@
         document.getElementById('comma').addEventListener('click', comma)
         document.getElementById('ac').addEventListener('click', ac)
     </script>
+<section>
+       <h1>Math App</h1>
+    <label for="iterations">Enter number of iterations:</label>
+    <input type="text" id="y" >
+    <input type="number" id="iterations" min="1">
+    <button id="calculate">Calculate</button>
+    <p id="result"></p>
 
+    <script>
+        document.getElementById('calculate').addEventListener('click', () => {
+            const iterations = parseInt(document.getElementById('iterations').value); // Get user input
+            if (isNaN(iterations) || iterations < 1) {
+                alert("Please enter a valid positive number!");
+                return;
+            }
+
+            let y = document.getElementById('y').value; // Initial value
+            let resultText = "Results:<br>";
+
+            for (let i = 0; i < iterations; i++) {
+                let x = y * 2; // Perform the operation
+                resultText += `Iteration ${i + 1}: y = ${y}, x = ${x}<br>`; // Append results
+                y = x; // Update `y` for the next iteration
+            }
+
+            document.getElementById('result').innerHTML = resultText; // Display results
+        });
+    </script>
+</section>
 </body>
 
 </html>
